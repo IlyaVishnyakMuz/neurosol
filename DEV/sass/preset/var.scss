@@ -1,0 +1,47 @@
+:root {
+
+    --index: calc(1vw + 1vh);
+    
+    --font-size: 16px;
+    --line-height: 1.4;
+
+    --item-width: 325px;
+
+    --burger-color: black;
+    --burger-color-active: white;
+
+    @media screen and (max-width: 480px) {
+        --item-width: 100%;
+    }
+
+    --container-width: calc(1340px + 60px);
+    --container-padding: 30px;
+
+    @media screen and (max-width: 1450px) {
+       
+    }
+    @media screen and (max-width: 1240px) {
+       
+    }
+    @media screen and (max-width: 768px) {
+        --container-padding: 20px;
+    }
+
+    --font-default: "Inter", sans-serif;
+
+    --transition: cubic-bezier(0.445, 0.050, 0.550, 0.950);
+    --transition2: cubic-bezier(0.785, 0.135, 0.150, 0.860);
+    --transition3: cubic-bezier(0.715, -0.235, 0.120, 1.300);
+
+    --bg-body: #0A0A0C;
+    --color-body: white;
+    --color-text: white;
+
+    --red: #DF1E1E;
+    --green: #CBDBB3;
+    --black: #0A0A0C;
+    --gray: #54545C;
+    --gray-for-form: #1D1D21;
+    --green-2: #829A5E;
+    --dark-red: #6E0000;
+}  

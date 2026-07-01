@@ -1,0 +1,142 @@
+.capabilities {
+    padding: 100px 0;
+
+    @include md3 {
+        padding: 60px 0;
+    }
+
+    &__title {
+        margin-bottom: 12px;
+        @include h2;
+
+        &--one {
+            margin-bottom: 44px;
+
+            @include md3 {
+                margin-bottom: 24px;
+            }
+        }
+    }
+
+    &__desc {
+        margin-bottom: 32px;
+        @include b1;
+
+        @include md3 {
+            margin-bottom: 24px;
+        }
+    }
+
+    &__items {
+        @include grid(12px, 12px);
+
+        &--five {
+            grid-template-columns: repeat(5, 1fr);
+
+            .capabilities__item {
+                grid-column: 1 span;
+            }
+
+            @include md2 {
+                grid-template-columns: repeat(12, 1fr);
+
+                .capabilities__item {
+                    grid-column: 6 span;
+                }
+
+                @include md4 {
+                    grid-column: 12 span;
+                }
+            }
+        }
+
+        &--three {
+            .capabilities__item {
+                grid-column: 4 span;
+
+                @include md2 {
+                    grid-column: 6 span;
+                }
+
+                @include md4 {
+                    grid-column: 12 span;
+                }
+            }
+        }
+    }
+
+    &__item {
+        grid-column: 3 span;
+        @include card;
+        padding: 24px 29px 31px;
+        @include b3;
+        @include flexcol;
+        gap: 12px;
+
+        @include md2 {
+            grid-column: 6 span;
+        }
+
+        @include md3 {
+            padding: 16px;
+        }
+
+        @include md4 {
+            grid-column: 12 span;
+        }
+    }
+
+    &__item-title {
+        color: $green;
+    }
+}
+
+.advantages {
+    padding: 100px 0;
+
+    @include md3 {
+        padding: 60px 0;
+    }
+
+    &__title {
+        margin-bottom: 44px;
+        @include h2;
+
+        @include md3 {
+            margin-bottom: 24px;
+        }
+    }
+
+    &__items {
+        @include grid(12px, 12px);
+        grid-template-columns: repeat(5, 1fr);
+
+        @include md2 {
+            grid-template-columns: repeat(12, 1fr);
+        }
+    }
+
+    &__item {
+        grid-column: 1 span;
+        @include card;
+        padding: 24px;
+        @include flexcol;
+        gap: 24px;
+
+        @include md2 {
+            grid-column: 6 span;
+        }
+
+        @include md4 {
+            grid-column: 12 span;
+        }
+    }
+
+    &__item-img {
+        @include flexcnt;
+    }
+
+    &__item-desc {
+        @include b3;
+    }
+}

@@ -1,0 +1,192 @@
+.footer {
+    padding: 80px 0;
+    @include border-top;
+
+    @include md3 {
+        padding: 40px 0;
+    }
+
+    &__top {
+        @include flexb;
+        gap: 44px;
+
+        @include md2 {
+            flex-direction: column;
+        }
+    }
+
+    &__left {
+        width: 62%;
+
+        @include md2 {
+            display: none;
+        }
+
+        ul {
+            @include flexcol;
+            gap: 24px;
+            li {
+                list-style: none;
+                a {
+                    @include b3;
+                    text-decoration: none;
+                    transition: 0.3s ease;
+
+                    &:hover {
+                        color: $green;
+                    }
+                }
+            }
+        }
+    }
+
+    &__eye {
+        width: 100px;
+        @include flexcnt;
+        margin-bottom: 105px;
+
+        @include md2 {
+            display: none;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        &--mob {
+            display: none;
+
+            @include md2 {
+                display: flex;
+                margin-top: 44px;
+                margin-bottom: 44px;
+                width: 57px;
+            }
+        }
+    }
+
+    &__right {
+        width: 38%;
+
+        @include md2 {
+            width: 100%;
+        }
+    }
+
+    &__logo {
+        @include flexcnt;
+        margin-bottom: 88px;
+        @include trhover;
+
+        img {
+            max-width: 100%;
+        }
+
+        @include md3 {
+            max-width: 210px;
+            margin-bottom: 24px;
+        }
+    }
+
+    &__desc {
+        @include b4;
+
+        @include md1 {
+            @include b3;
+        }
+    }
+
+    &__items {
+        margin-top: 92px;
+        @include flexb;
+        margin-right: 42px;
+        gap: 40px;
+        row-gap: 12px;
+
+        @include md1 {
+            flex-wrap: wrap;
+        }
+
+        @include md2 {
+            margin-top: 0;
+            flex-direction: column;
+        }
+    }
+
+    &__item {
+        @include flexcol;
+        gap: 10px;
+    }
+
+    &__item-title {
+        @include h4;
+        text-decoration: none;
+        transition: 0.3s ease;
+
+        &:hover {
+            color: $green;
+        }
+    }
+
+    &__item-desc {
+        @include b4;
+        color: $gray;
+    }
+
+    &__bottom {
+        @include flexb;
+        align-items: flex-end;
+        gap: 44px;
+        margin-top: 93px;
+
+        @include md3 {
+            margin-top: 44px;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+
+    &__bottom-items {
+        width: 62%;
+        @include flex;
+        gap: 24px;
+        row-gap: 12px;
+
+        @include md2 {
+            width: auto;
+        }
+
+        @include md3 {
+            flex-wrap: wrap;
+        }
+    }
+
+    &__bottom-item {
+        @include b3;
+        color: $gray;
+
+        a {
+            @include b3;
+            color: $gray;
+            text-decoration: none;
+        }
+    }
+
+    &__bottom-btn {
+        width: 38%;
+
+        @include md2 {
+            width: auto;
+        }
+
+        a {
+            border-radius: 100%;
+            min-width: 44px;
+            max-width: 44px;
+            height: 44px;
+            @include flexcnt;
+            justify-content: center;
+            @include trhover;
+        }
+    }
+}
