@@ -94,6 +94,39 @@ $(document).ready(function() {
 		}
 	});
 
+	const advsSlider = new Swiper('.advs__slider', {
+		slidesPerView: 1,
+		spaceBetween: 12,
+		pagination: {
+			el: '.advs .swiper-pagination',
+			type: 'bullets',
+			clickable: true
+		},
+		breakpoints: {
+			480: {
+				slidesPerView: 2,
+			},
+		}
+	});
+
+	const photosSlider = new Swiper('.photos__slider', {
+		slidesPerView: 1,
+		spaceBetween: 12,
+		pagination: {
+			el: '.photos .swiper-pagination',
+			type: 'bullets',
+			clickable: true
+		},
+		breakpoints: {
+			480: {
+				slidesPerView: 2,
+			},
+			992: {
+				slidesPerView: 3,
+			},
+		}
+	});
+
 	// hover: active slide scales up, neighbors shrink in width, gaps stay fixed
 	const SCALE = 1.1;
 	const GAP = 12;

@@ -1,0 +1,91 @@
+.aiprinciple {
+    padding: 100px 0;
+
+    @include md3 {
+        padding: 60px 0;
+    }
+
+    &__title {
+        @include h2;
+        margin-bottom: 44px;
+
+        @include md3 {
+            margin-bottom: 24px;
+        }
+    }
+
+    &__items {
+        @include grid(0px, 0px);
+
+        @include md4 {
+            gap: 12px;
+        }
+    }
+
+    &__item {
+        grid-column: 4 span;
+        @include card;
+        padding: 16px;
+
+        @include md3 {
+            grid-column: 6 span;
+        }
+
+        @include md4 {
+            grid-column: 12 span;
+        }
+    }
+
+    &__item-img {
+        @include flexcnt;
+        aspect-ratio: 415 / 239;
+        margin-bottom: 17px;
+        border-radius: 4px;
+        overflow: hidden;
+
+        img {
+            @include ibg;
+        }
+    }
+
+    &__item-title {
+        @include h3;
+    }
+
+    &__item-desc {
+        margin-top: 12px;
+        @include b3;
+    }
+}
+
+.fond {
+    padding: 80px 0;
+
+    @include md3 {
+        padding: 60px 0;
+    }
+
+    &__body {
+        @include flexcnt;
+        gap: 58px;
+
+        @include md3 {
+            flex-direction: column-reverse;
+            align-items: flex-start;
+            gap: 24px;
+        }
+    }
+
+    &__desc {
+        @include b1;
+    }
+
+    &__img {
+        @include flexcnt;
+        min-width: 224px;
+
+        img {
+            width: 100%;
+        }
+    }
+}

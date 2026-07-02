@@ -1,0 +1,164 @@
+.complexadvs {
+    padding: 100px 0;
+
+    @include md3 {
+        padding: 60px 0;
+    }
+
+    &__body {
+        @include flexb;
+        gap: 44px;
+    }
+
+    &__left {
+        max-width: 498px;
+        width: 100%;
+        @include flexcol;
+        justify-content: space-between;
+        gap: 24px;
+        align-items: flex-start;
+
+        @include md2 {
+            max-width: 100%;
+        }
+
+        @include md3 {
+            gap: 8px;
+        }
+    }
+
+    &__top {
+        @include flexcol;
+        gap: 12px
+    }
+
+    &__title {
+        @include h2;
+    }
+
+    &__desc {
+        @include b3;
+    }
+
+    &__img {
+        max-width: 710px;
+        width: 100%;
+        border-radius: 10px;
+        overflow: hidden;
+        height: 398px;
+        @include flexcnt;
+
+        @include md2 {
+            display: none;
+        }
+
+        img {
+            @include ibg;
+        }
+
+        &--mob {
+            display: none;
+
+            @include md2 {
+                display: flex;
+                height: auto;
+                aspect-ratio: 348 / 231;
+                max-width: 100%;
+            }
+        }
+    }
+
+    &__center {
+        @include flexcol;
+        gap: 12px;
+    }
+
+    &__sub {
+        @include h4;
+        color: $green;
+    }
+
+    &__items {
+        @include flexcol;
+        gap: 8px;
+    }
+
+    &__item {
+        @include flexcnt;
+        gap: 12px;
+
+        @include md3 {
+            align-items: flex-start;
+        }
+    }
+
+    &__item-img {
+        min-width: 40px;
+        max-width: 40px;
+        height: 40px;
+        @include flexcnt;
+        justify-content: center;
+        @include card;
+    }
+
+    &__item-desc {
+        @include b3;
+    }
+
+    &__btn {
+        @include md3 {
+            font-size: 16px;
+            width: 100%;
+        }
+    }
+}
+
+.photos {
+    padding: 80px 0;
+
+    @include md3 {
+        padding: 60px 0;
+    }
+
+    &__title {
+        @include h2;
+        margin-bottom: 44px;
+
+        @include md3 {
+            margin-bottom: 24px;
+        }
+    }
+
+    &__slider {
+        overflow: hidden;
+        position: relative;
+    }
+
+    &__slide {
+        @include card;
+        padding: 15.5px 13.5px;
+        @include flexcnt;
+        border-radius: 15px !important;
+        aspect-ratio: 439 / 248;
+
+        &::before {
+            border-radius: 15px !important;
+        }
+
+        @include md3 {
+            border-radius: 20px !important;
+
+            &::before {
+                border-radius: 20px !important;
+            }
+        }
+
+        img {
+            @include ibg;
+
+            @include md3 {
+                border-radius: 16px;
+            }
+        }
+    }
+}

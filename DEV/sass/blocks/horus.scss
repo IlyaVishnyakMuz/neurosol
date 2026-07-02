@@ -1,5 +1,161 @@
+.pmain {
+    padding: 149px 0 20px;
+    overflow: hidden;
+    position: relative;
+
+    @include md3 {
+        padding: 96px 0 20px;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 235px;
+        background: linear-gradient(180deg, #0A0A0A 27.46%, rgba(0, 0, 0, 0) 100%);
+        z-index: 1;
+        left: 0;
+        top: 0;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -100px;
+        width: 100%;
+        left: 0;
+        height: 275px;
+        background: linear-gradient(180deg, #0A0A0A 27.46%, rgba(0, 0, 0, 0) 100%);
+        z-index: 1;
+        transform: rotate(180deg);
+
+        @include md3 {
+            bottom: 138px;
+        }
+    }
+
+    .aioseo-breadcrumbs {
+        position: relative;
+        z-index: 2;
+        color: $gray;
+
+        * {
+            color: $gray !important;
+        }
+    }
+
+    &__before {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 497px;
+        height: 100%;
+        background: linear-gradient(180deg, rgba(10, 10, 10, 0.8) 56.46%, rgba(5, 5, 5, 0.399252) 78.83%, rgba(0, 0, 0, 0) 101.12%);
+        transform: rotate(-90deg);
+
+        @include md3 {
+            display: none;
+        }
+    }
+
+    &__wrap {
+        min-height: 534px;
+        @include flexcol;
+        justify-content: center;
+        align-items: flex-start;
+        max-width: 663px;
+        position: relative;
+        z-index: 2;
+
+        @include md3 {
+            min-height: 650px;
+            justify-content: flex-end;
+        }
+
+        @include md4 {
+            align-items: stretch;
+        }
+    }
+
+    &__title {
+        @include h1;
+        margin-bottom: 12px;
+    }
+
+    &__desc {
+        @include b1;
+    }
+
+    &__btn {
+        margin-top: 44px;
+
+        @include md3 {
+            margin-top: 24px;
+        }
+    }
+
+    &__img {
+        @include flexcnt;
+        position: absolute;
+        z-index: 0;
+        min-width: 1920px;
+        height: 100%;
+        width: 100%;
+        top: 31px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        @include md3 {
+            max-width: 1159px;
+            min-width: 1159px;
+            right: auto;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 48px;
+            height: 496px
+        }
+
+        img {
+            @include ibg;
+        }
+    }
+
+    &--security {
+        .pmain__wrap {
+            max-width: 755px;
+        }
+
+        .pmain__img {
+            right: -167px;
+            max-width: 1080px;
+            min-width: 1080px;
+            width: 100%;
+            top: 60px;
+            left: auto;
+            transform: none;
+
+            @include md1 {
+                right: -267px;
+            }
+
+            @include md3 {
+                max-width: 767px;
+                min-width: 767px;
+                right: auto;
+                left: 50%;
+                transform: translateX(-50%);
+                top: 87px;
+                height: 551px;
+            }
+        }
+    }
+}
+
 .capabilities {
     padding: 100px 0;
+    background: $black;
+    position: relative;
+    z-index: 1;
 
     @include md3 {
         padding: 60px 0;
@@ -91,11 +247,128 @@
     }
 }
 
+.principle {
+    padding: 100px 0;
+    background: $black;
+
+    @include md3 {
+        padding: 60px 0;
+    }
+
+    &__body {
+        @include flex;
+        align-items: flex-start;
+        gap: 18px;
+
+        @include md3 {
+            flex-direction: column;
+            gap: 44px;
+        }
+    }
+
+    &__left {
+        position: relative;
+        max-width: 382px;
+        width: 100%;
+
+        @include md3 {
+            max-width: 100%;
+        }
+    }
+
+    &__left-title {
+        @include h2;
+        margin-bottom: 81px;
+        position: relative;
+        z-index: 1;
+    }
+
+    &__left-img {
+        @include flexcnt;
+        position: absolute;
+        top: 85px;
+        left: -50px;
+
+        @include md3 {
+            display: none;
+        }
+
+        &--mob {
+            display: none;
+
+            @include md3 {
+                display: flex;
+            }
+        }
+    }
+
+    &__bottom {
+        position: relative;
+        z-index: 1;
+
+        @include md3 {
+            @include flex;
+        }
+    }
+
+    &__bottom-title {
+        @include h1;
+        color: $red;
+
+        @include md3 {
+            @include flexcol;
+            min-width: 90px;
+
+            span {
+                @include b1;
+            }
+        }
+    }
+
+    &__bottom-desc {
+        @include b1;
+    }
+
+    &__items {
+        @include flex;
+        gap: 12px;
+
+        @include md4 {
+            flex-direction: column;
+        }
+    }
+
+    &__item {
+        padding: 13px 12px 0;
+        @include card;
+        text-align: center;
+        @include flexcol;
+        gap: 17px;
+    }
+
+    &__item-img {
+        @include flexcnt;
+        aspect-ratio: 241 / 161;
+        max-height: 161px;
+        height: 100%;
+
+        img {
+            @include ibg;
+            object-fit: contain;
+        }
+    }
+
+    &__item-title {
+        @include b3;
+    }
+}
+
 .advantages {
     padding: 100px 0;
 
     @include md3 {
         padding: 60px 0;
+        display: none;
     }
 
     &__title {
@@ -138,5 +411,64 @@
 
     &__item-desc {
         @include b3;
+    }
+}
+
+.comparison {
+    padding: 100px 0;
+
+    @include md3 {
+        padding: 60px 0;
+        display: none;
+    }
+
+    &__title {
+        @include h2;
+        margin-bottom: 44px;
+    }
+
+    &__content {
+        @include flexcol;
+        gap: 12px;
+    }
+
+    &__items {
+        @include grid(12px, 12px);
+    }
+
+    &__space {
+        grid-column: 3 span;
+    }
+
+    &__item {
+        grid-column: 3 span;
+        @include flexcntb;
+        @include b3;
+        padding: 12px 24px;
+        border-radius: 10px;
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 10px;
+            padding: 1px;
+            background: linear-gradient(90deg, #5F5F72 0%, #2D2D2D 54.33%, #5F5F72 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        &:nth-child(2) {
+            color: $black;
+            background: $green;
+        }
+    }
+
+    &__item-checkbox {
+        @include flexcnt;
     }
 }

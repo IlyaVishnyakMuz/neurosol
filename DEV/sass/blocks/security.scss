@@ -1,0 +1,100 @@
+.advs {
+    padding: 100px 0;
+
+    @include md3 {
+        padding: 60px 0;
+    }
+
+    &__title {
+        margin-bottom: 24px;
+        @include h2;
+    }
+
+    &__items {
+        @include flex;
+        gap: 24px;
+
+        &--grid {
+            @include grid(24px, 24px);
+        }
+
+        @include md2 {
+            @include grid(24px, 24px);
+        }
+
+        @include md3 {
+            display: none;
+        }
+    }
+
+    &__item {
+        @include flexcnt;
+        gap: 12px;
+        grid-column: 6 span;
+
+        &:first-child {
+            grid-column: 12 span;
+        }
+
+        @include md3 {
+            @include card;
+            padding: 24px 16px;
+            flex-direction: column;
+            align-items: flex-start;
+            height: 100%;
+            gap: 24px
+        }
+    }
+
+    &__item-img {
+        @include card;
+        min-width: 40px;
+        max-width: 40px;
+        height: 40px;
+        @include flexcnt;
+        justify-content: center;
+
+        @include md3 {
+            background: none;
+            min-width: 24px;
+            max-width: 24px;
+            height: 24px;
+            &::before {
+                display: none;
+            }
+        }
+    }
+
+    &__item-desc {
+        @include b3;
+
+        span {
+            color: $green;
+        }
+    }
+
+    &__slider {
+        overflow: hidden;
+        display: none;
+
+        @include md3 {
+            display: block;
+        }
+
+        .swiper-wrapper {
+        }
+        .swiper-slide {
+            height: auto;
+        }
+        .swiper-pagination {
+        }
+    }
+
+    &__btn {
+        margin-top: 44px;
+
+        @include md3 {
+            display: none;
+        }
+    }
+}
