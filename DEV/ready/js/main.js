@@ -127,82 +127,110 @@ $(document).ready(function() {
 		}
 	});
 
+	const techSlider = new Swiper('.tech__slider', {
+		slidesPerView: 1,
+		spaceBetween: 12,
+		pagination: {
+			el: '.tech .swiper-pagination',
+			type: 'bullets',
+			clickable: true
+		},
+		breakpoints: {
+			480: {
+				slidesPerView: 2,
+			},
+			992: {
+				slidesPerView: 3,
+			},
+			1200: {
+				slidesPerView: 4,
+			},
+		}
+	});
+
 	// hover: active slide scales up, neighbors shrink in width, gaps stay fixed
-	const SCALE = 1.1;
-	const GAP = 12;
-	const sliderEl = document.querySelector('.videos__slider');
-	let currentActive = null;
+	function initHoverScale(sliderInstance, sliderSelector, breakpointsMap, options) {
+		const SCALE = (options && options.scale) || 1.1;
+		const GAP = (options && options.gap) || 12;
+		const sliderEl = document.querySelector(sliderSelector);
+		if (!sliderEl) return;
+		let currentActive = null;
 
-	function getSlidesPerView() {
-		const w = window.innerWidth;
-		if (w >= 1200) return 4;
-		if (w >= 768) return 3;
-		if (w >= 480) return 2;
-		return 1;
-	}
-
-	function getVisibleSlides() {
-		const n = getSlidesPerView();
-		const start = videosSlider.activeIndex;
-		return Array.from(videosSlider.slides).slice(start, start + n);
-	}
-
-	function applyHover(activeSlide) {
-		const visible = getVisibleSlides();
-		const n = visible.length;
-		if (n <= 1) return;
-		const totalWidth = sliderEl.offsetWidth;
-		const baseWidth = (totalWidth - GAP * (n - 1)) / n;
-		const activeWidth = baseWidth * SCALE;
-		const neighborWidth = (totalWidth - GAP * (n - 1) - activeWidth) / (n - 1);
-
-		visible.forEach(slide => {
-			if (slide === activeSlide) {
-				slide.style.setProperty('width', activeWidth + 'px', 'important');
-				slide.classList.add('_hovered');
-			} else {
-				slide.style.setProperty('width', neighborWidth + 'px', 'important');
-				slide.classList.remove('_hovered');
-			}
-		});
-	}
-
-	function resetHover() {
-		const visible = getVisibleSlides();
-		const n = visible.length;
-		const totalWidth = sliderEl.offsetWidth;
-		const baseWidth = (totalWidth - GAP * (n - 1)) / n;
-		visible.forEach(slide => {
-			slide.style.setProperty('width', baseWidth + 'px', 'important');
-			slide.classList.remove('_hovered');
-		});
-	}
-
-	// фиксируем высоту слайдера до первого hover чтобы не скакал
-	let heightFixed = false;
-
-	sliderEl.addEventListener('mouseover', (e) => {
-		const slide = e.target.closest('.swiper-slide');
-		if (!slide) return;
-
-		if (!heightFixed) {
-			sliderEl.style.height = sliderEl.offsetHeight + 'px';
-			heightFixed = true;
+		function getSlidesPerView() {
+			const w = window.innerWidth;
+			let result = 1;
+			Object.keys(breakpointsMap).map(Number).sort((a, b) => a - b).forEach(bp => {
+				if (w >= bp) result = breakpointsMap[bp];
+			});
+			return result;
 		}
 
-		if (slide === currentActive) return;
-		currentActive = slide;
-		applyHover(currentActive);
-	});
+		function getVisibleSlides() {
+			const n = getSlidesPerView();
+			const start = sliderInstance.activeIndex;
+			return Array.from(sliderInstance.slides).slice(start, start + n);
+		}
 
-	sliderEl.addEventListener('mouseleave', () => {
-		currentActive = null;
-		resetHover();
-	});
+		function applyHover(activeSlide) {
+			const visible = getVisibleSlides();
+			const n = visible.length;
+			if (n <= 1) return;
+			const totalWidth = sliderEl.offsetWidth;
+			const baseWidth = (totalWidth - GAP * (n - 1)) / n;
+			const activeWidth = baseWidth * SCALE;
+			const neighborWidth = (totalWidth - GAP * (n - 1) - activeWidth) / (n - 1);
 
-	window.addEventListener('resize', () => {
-		currentActive = null;
-		resetHover();
-	});
+			visible.forEach(slide => {
+				if (slide === activeSlide) {
+					slide.style.setProperty('width', activeWidth + 'px', 'important');
+					slide.classList.add('_hovered');
+				} else {
+					slide.style.setProperty('width', neighborWidth + 'px', 'important');
+					slide.classList.remove('_hovered');
+				}
+			});
+		}
+
+		function resetHover() {
+			const visible = getVisibleSlides();
+			const n = visible.length;
+			const totalWidth = sliderEl.offsetWidth;
+			const baseWidth = (totalWidth - GAP * (n - 1)) / n;
+			visible.forEach(slide => {
+				slide.style.setProperty('width', baseWidth + 'px', 'important');
+				slide.classList.remove('_hovered');
+			});
+		}
+
+		// фиксируем высоту слайдера до первого hover чтобы не скакал
+		let heightFixed = false;
+
+		sliderEl.addEventListener('mouseover', (e) => {
+			const slide = e.target.closest('.swiper-slide');
+			if (!slide) return;
+
+			if (!heightFixed) {
+				sliderEl.style.height = sliderEl.offsetHeight + 'px';
+				heightFixed = true;
+			}
+
+			if (slide === currentActive) return;
+			currentActive = slide;
+			applyHover(currentActive);
+		});
+
+		sliderEl.addEventListener('mouseleave', () => {
+			currentActive = null;
+			resetHover();
+		});
+
+		window.addEventListener('resize', () => {
+			currentActive = null;
+			resetHover();
+		});
+	}
+
+	initHoverScale(videosSlider, '.videos__slider', { 0: 1, 480: 2, 768: 3, 1200: 4 });
+	initHoverScale(techSlider, '.tech__slider', { 0: 1, 480: 2, 992: 4 });
 
 });

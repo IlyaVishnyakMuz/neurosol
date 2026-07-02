@@ -1,3 +1,243 @@
+.homemain {
+    position: relative;
+    padding: 178px 0 30px;
+    overflow: hidden;
+
+    @include md3 {
+        padding: 292px 0 20px;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 50%;
+        height: calc(100% + 30px);
+        top: -15px;
+        background: rgba(10, 10, 12, 1);
+        z-index: 1;
+        mix-blend-mode: overlay;
+        filter: blur(29px);
+
+        @include md3 {
+            display: none;
+        }
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        width: calc(100% + 24px);
+        height: 407px;
+        bottom: -93px;
+        background: linear-gradient(180deg, #0A0A0A 34.31%, rgba(0, 0, 0, 0) 100%);
+        transform: rotate(180deg);
+        filter: blur(29px);
+
+        @include md3 {
+            top: 113px;
+            bottom: auto;
+            height: 307px;
+            width: 100%;
+            background: linear-gradient(180deg, #0A0A0A 27.46%, rgba(0, 0, 0, 0) 76.25%);
+        }
+    }
+
+    &__video {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: calc(100% - 205px);
+        height: 100%;
+
+        @include md3 {
+            height: 331px;
+            width: calc(100% + 178px);
+            right: -8px;
+            top: 3px;
+        }
+
+        video {
+            @include ibg;
+        }
+    }
+
+    &__content {
+        position: relative;
+        z-index: 1;
+        max-width: 656px;
+    }
+
+    &__sub {
+        margin-bottom: 24px;
+        @include b1;
+
+        @include md3 {
+            margin-bottom: 12px;
+        }
+
+        .green {
+            color: $green;
+        }
+
+        .red {
+            color: $red;
+        }
+    }
+
+    &__title {
+        @include h1;
+        margin-bottom: 24px;
+
+        @include md3 {
+            margin-bottom: 12px;
+        }
+    }
+
+    &__desc {
+        @include b1;
+    }
+
+    &__btn {
+        margin-top: 44px;
+
+        @include md3 {
+            margin-top: 32px;
+        }
+
+        @include md4 {
+            width: 100%;
+        }
+    }
+
+    &__quote {
+        @include b5;
+        color: $gray;
+        margin-top: 72px;
+
+        @include md3 {
+            display: none;
+        }
+    }
+}
+
+.steps {
+    padding: 84px 0;
+    overflow: hidden;
+
+    @include md3 {
+        padding: 58px 0;
+    }
+
+    &__title {
+        margin-bottom: 70px;
+        @include h2;
+        position: relative;
+        z-index: 1;
+
+        @include md3 {
+            margin-bottom: 24px;
+        }
+    }
+
+    &__content {
+        position: relative;
+        @include flexcntb;
+        gap: 80px;
+
+        @include md3 {
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 0;
+        }
+    }
+
+    &__items {
+        @include flexcol;
+        gap: 70px;
+        position: relative;
+        z-index: 1;
+
+        @include md3 {
+            gap: 0;
+        }
+    }
+
+    &__item {
+        @include flexcol;
+        max-width: 419px;
+
+        @include md3 {
+            @include card;
+            padding: 24px 16px;
+            max-width: 100%;
+        }
+    }
+
+    &__item-sub {
+        margin-bottom: 24px;
+        @include b1;
+    }
+
+    &__item-title {
+        @include h3;
+        color: $green;
+    }
+
+    &__item-desc {
+        margin-top: 8px;
+        @include b1;
+    }
+
+    &__img {
+        position: absolute;
+        @include center;
+        max-width: 660px;
+        width: 100%;
+
+        @include md2 {
+            max-width: 550px;
+        }
+
+        @include md3 {
+            position: relative;
+            top: 0;
+            left: 0;
+            transform: none;
+            margin-top: 24px;
+        }
+
+        img {
+            @include ibg;
+            object-fit: contain;
+        }
+    }
+
+    &__img-ray {
+        position: absolute;
+        width: 31%;
+        height: 42%;
+        top: 34%;
+        left: 33%;
+        animation: raymove 5s ease-in-out infinite;
+
+        svg {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+}
+
+@keyframes raymove {
+    0%, 100% {
+        transform: translateX(-8%);
+    }
+    50% {
+        transform: translateX(8%);
+    }
+}
+
 .fullcycle {
     padding: 100px 0;
 
@@ -59,6 +299,395 @@
             max-width: 100%;
             align-self: center;
         }
+    }
+}
+
+.flagman {
+    position: relative;
+    overflow: hidden;
+
+    @include md3 {
+        padding: 60px 0;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: -286px;
+        top: -207px;
+        width: 1455px;
+        height: 942px;
+        transform: rotate(90deg);
+        background: linear-gradient(180deg, rgba(10, 10, 12, 0) 15.32%, #0A0A0C 99.29%);
+        z-index: 1;
+
+        @include md3 {
+            display: none;
+        }
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 108px;
+        z-index: 1;
+        background: linear-gradient(180deg, rgba(10, 10, 12, 0.0) 15.32%, #0A0A0C 49.29%);
+
+        @include md3 {
+            display: none;
+        }
+    }
+
+    &__body {
+        min-height: 628px;
+        @include flexcol;
+        gap: 24px;
+        justify-content: center;
+        align-items: flex-start;
+        max-width: 328px;
+
+        @include md3 {
+            gap: 32px;
+            min-height: 0;
+            max-width: 100%;
+        }
+    }
+
+    &__top {
+        position: relative;
+        z-index: 2;
+        @include flexcol;
+        gap: 12px;
+        align-items: flex-start;
+    }
+
+    &__sub {
+        background: $green;
+        padding: 12px;
+        @include b5;
+        color: $black;
+        border-radius: 10px;
+    }
+
+    &__title {
+        @include h1;
+        margin-bottom: 12px;
+
+        @include md3 {
+            @include h2;
+            margin-bottom: 8px;
+        }
+
+        &--mob {
+            display: none;
+            margin-bottom: 0;
+
+            @include md3 {
+                display: block;
+            }
+        }
+    }
+
+    &__video {
+        position: absolute;
+        right: -224px;
+        top: -70px;
+        width: calc(100% - 94px);
+        height: calc(100% + 140px);
+        z-index: 0;
+        max-width: 1600px;
+
+        @include md1 {
+            width: 100%;
+        }
+
+        @include md2 {
+            right: 0;
+        }
+
+        @include md3 {
+            position: static;
+            width: 100%;
+            aspect-ratio: 350 / 176;
+            height: unset;
+            border-radius: 20px;
+            overflow: hidden;
+            transform: rotate(180deg);
+        }
+
+        video {
+            object-fit: cover;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+
+            @include md3 {
+                position: static;
+            }
+        }
+    }
+
+    &__bottom {
+        position: relative;
+        z-index: 2;
+    }
+
+    &__desc {
+        @include b1;
+    }
+
+    &__btn {
+        margin-top: 44px;
+
+        @include md3 {
+            margin-top: 24px;
+        }
+
+        @include md4 {
+            width: 100%;
+        }
+    }
+}
+
+.tech {
+    padding: 100px 0;
+    overflow: hidden;
+    @include border-top;
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 27%;
+        height: 100%;
+        background: linear-gradient(270deg, rgba(10, 10, 12, 0) 0%, #0A0A0C 20.29%);
+        z-index: 2;
+        pointer-events: none;
+
+        @include md2 {
+            width: 35%;
+        }
+
+        @include md3 {
+            display: none;
+        }
+    }
+
+    @include md3 {
+        padding: 60px 0;
+    }
+
+    &__body {
+        @include flex;
+
+        @include md3 {
+            flex-direction: column;
+            gap: 24px;
+        }
+    }
+
+    &__content {
+        @include flexcol;
+        justify-content: space-between;
+        gap: 24px;
+        width: 27%;
+        align-items: flex-start;
+        padding-right: 32px;
+        position: relative;
+        z-index: 2;
+
+        @include md2 {
+            width: 35%;
+        }
+
+        @include md3 {
+            width: 100%;
+            padding-right: 0;
+        }
+    }
+
+    &__title {
+        @include h2;
+    }
+
+    &__btn {
+        @include md3 {
+            display: none;
+        }
+
+        &--mob {
+            display: none;
+
+            @include md3 {
+                display: block;
+                max-width: max-content;
+            }
+
+            @include md4 {
+                max-width: 100%;
+            }
+        }
+    }
+
+    &__slider {
+        width: 73%;
+
+        @include md2 {
+            width: 65%;
+        }
+
+        @include md3 {
+            width: 100%;
+        }
+
+        .swiper-slide {
+            height: auto;
+            transition: width 0.3s ease;
+
+            &:nth-child(1) {
+                .tech__slide-img {
+                    &::before {
+                        top: 21px;
+                        right: 18px;
+                    }
+                }
+            }
+
+            &:nth-child(2) {
+                .tech__slide-img {
+                    &::before {
+                        top: 7px;
+                        right: 30.5px;
+                    }
+                }
+            }
+
+            &:nth-child(3) {
+                .tech__slide-img {
+                    &::before {
+                        top: 35.5px;
+                        right: 9px;
+                    }
+                }
+            }
+
+            &:nth-child(4) {
+                .tech__slide-img {
+                    &::before {
+                        top: 7px;
+                        right: 26px;
+                    }
+                }
+            }
+
+            &._hovered {
+                position: relative;
+                z-index: 2;
+
+                .tech__slide {
+                    transform: scale(1.05);
+                }
+            }
+        }
+    }
+
+    &__slide {
+        @include card;
+        @include flexcol;
+        height: 100%;
+        padding: 24px 16px;
+        transition: transform 0.3s ease;
+        position: relative;
+
+        &:hover {
+            .tech__slide-img {
+                &::before {
+                    animation: techpoint 1s ease-in-out infinite;
+                }
+            }
+
+            .tech__slide-btn {
+                color: $red;
+
+                path {
+                    stroke: $red;
+                }
+            }
+        }
+    }
+
+    &__slide-link {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    &__slide-img {
+        margin-bottom: 24px;
+        @include flexcnt;
+        max-width: max-content;
+        height: 54px;
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            min-width: 6px;
+            max-width: 6px;
+            height: 6px;
+            background: $red;
+            border-radius: 100%;
+        }
+
+        img {
+            @include ibg;
+            object-fit: contain;
+            object-position: left;
+        }
+    }
+
+    &__slide-title {
+        @include h4;
+        color: $green;
+        margin-bottom: 12px;
+    }
+
+    &__slide-desc {
+        @include b3;
+        margin-bottom: 24px;
+    }
+
+    &__slide-btn {
+        margin-top: auto;
+        @include flexcnt;
+        gap: 8px;
+        color: $green;
+        text-decoration: none;
+        @include b4;
+        transition: 0.3s ease;
+
+        path {
+            transition: 0.3s ease;
+        }
+    }
+}
+
+@keyframes techpoint {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.3);
     }
 }
 
