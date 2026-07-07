@@ -240,6 +240,7 @@
 
 .fullcycle {
     padding: 100px 0;
+    @include border-bottom;
 
     @include md3 {
         padding: 60px 0;
@@ -460,15 +461,15 @@
     @include border-top;
     position: relative;
 
-    &::before {
+    &::after {
         content: '';
         position: absolute;
         left: 0;
-        top: 0;
+        top: 1px;
         width: 27%;
-        height: 100%;
+        height: calc(100% - 1px);
         background: linear-gradient(270deg, rgba(10, 10, 12, 0) 0%, #0A0A0C 20.29%);
-        z-index: 2;
+        z-index: 1;
         pointer-events: none;
 
         @include md2 {
@@ -883,15 +884,15 @@
         padding: 60px 0;
     }
 
-    &::before {
+    &::after {
         content: '';
         position: absolute;
         left: 0;
-        top: 0;
+        top: 1px;
         width: 35%;
-        height: 100%;
+        height: calc(100% - 1px);
         background: linear-gradient(270deg, rgba(10, 10, 12, 0) 0%, #0A0A0C 20.29%);
-        z-index: 2;
+        z-index: 1;
         pointer-events: none;
 
         @include md2 {
@@ -1081,13 +1082,8 @@
         position: relative;
 
         &:hover {
-            .tech__slide-img {
-                &::before {
-                    animation: techpoint 1s ease-in-out infinite;
-                }
-            }
 
-            .tech__slide-btn {
+            .homeeq__slide-btn {
                 color: $red;
 
                 path {

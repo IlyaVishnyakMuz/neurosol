@@ -7,7 +7,7 @@
     color: $black;
     overflow: hidden;
 
-    @include md4 {
+    @include md2 {
         background-image: none;
         background: $green;
         padding: 84px 0 0 0;
@@ -16,7 +16,7 @@
     &__bg {
         display: none;
 
-        @include md4 {
+        @include md2 {
             display: flex;
             width: calc(100% + 60px);
             margin: 0 -30px;
@@ -32,7 +32,7 @@
         min-height: 538px;
         @include flexcnt;
 
-        @include md3 {
+        @include md2 {
             min-height: 300px;
         }
 

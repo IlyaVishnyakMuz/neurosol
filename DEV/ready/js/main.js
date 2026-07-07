@@ -10,9 +10,36 @@ $(document).ready(function() {
 	}
 
 	// === Burger menu
-	$(document).on('click', '.burger', function () {
+	$(document).on('click', '.header__burger', function () {
 		$(this).toggleClass('active');
+		$('.header--green').toggleClass('active');
 		$('.burger-content').slideToggle();
+	});
+
+	// === Eye desktop follows cursor
+	const $header = $('.header');
+	const $eyeDesktop = $('.header__eye--desktop');
+	const $eyeSmallImg = $eyeDesktop.find('.header__eye-small img');
+	const eyeMinX = -9;
+	const eyeMaxX = 7;
+
+	$header.on('mousemove', function (e) {
+		if (!$eyeDesktop.length) return;
+
+		const eyeRect = $eyeDesktop[0].getBoundingClientRect();
+		const eyeCenterX = eyeRect.left + eyeRect.width / 2;
+		const halfWindowWidth = $(window).width() / 2;
+		const ratio = (e.clientX - eyeCenterX) / halfWindowWidth;
+		const clampedRatio = Math.max(-1, Math.min(1, ratio));
+		const x = clampedRatio > 0
+			? clampedRatio * eyeMaxX
+			: clampedRatio * Math.abs(eyeMinX);
+
+		$eyeSmallImg.css('transform', `translateX(${x}px)`);
+	});
+
+	$header.on('mouseleave', function () {
+		$eyeSmallImg.css('transform', 'translateX(0px)');
 	});
 
 	// sliders
@@ -278,5 +305,65 @@ $(document).ready(function() {
 	initHoverScale(videosSlider, '.videos__slider', { 0: 1, 480: 2, 768: 3, 1200: 4 });
 	initHoverScale(techSlider, '.tech__slider', { 0: 1, 480: 2, 992: 4 });
 	initHoverScale(homeeqSlider, '.homeeq__slider', { 0: 1, 480: 2, 1200: 2.3 }, { scale: 1.04 });
+
+	// === Скролл наверх страницы
+	$(document).on('click', '.footer__bottom-btn a', function (e) {
+		e.preventDefault();
+		$('html, body').animate({ scrollTop: 0 }, 600);
+	});
+
+	$('.header__search input').on('input', function() {
+		$(this).parent().toggleClass('active', $(this).val() !== '');
+	});
+
+	// === Анимации появления секций при скролле + герой при загрузке
+	if (window.gsap && window.ScrollTrigger && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+		gsap.registerPlugin(ScrollTrigger);
+
+		const heroItems = document.querySelectorAll('.reveal-hero-item');
+		if (heroItems.length) {
+			gsap.to(heroItems, {
+				opacity: 1,
+				y: 0,
+				duration: 0.9,
+				ease: 'power2.out',
+				stagger: 0.15,
+				delay: 0.2
+			});
+		}
+
+		document.querySelectorAll('.reveal').forEach(function (section) {
+			const items = section.querySelectorAll('.reveal-item');
+
+			gsap.to(section, {
+				opacity: 1,
+				y: 0,
+				duration: 1,
+				delay: 0.15,
+				ease: 'power2.out',
+				scrollTrigger: {
+					trigger: section,
+					start: 'top 80%',
+					once: true
+				}
+			});
+
+			if (items.length) {
+				gsap.to(items, {
+					opacity: 1,
+					y: 0,
+					duration: 0.8,
+					delay: 0.15,
+					ease: 'power2.out',
+					stagger: 0.18,
+					scrollTrigger: {
+						trigger: section,
+						start: 'top 80%',
+						once: true
+					}
+				});
+			}
+		});
+	}
 
 });

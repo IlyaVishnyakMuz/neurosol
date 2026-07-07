@@ -7,7 +7,7 @@
     color: $black;
     overflow: hidden;
 
-    @include md4 {
+    @include md2 {
         background-image: none;
         padding: 84px 0 0 0;
     }
@@ -19,7 +19,7 @@
             color: $dark-red !important;
         }
 
-        @include md4 {
+        @include md2 {
             color: $gray !important;
 
             * {
@@ -31,7 +31,7 @@
     &__bg {
         display: none;
 
-        @include md4 {
+        @include md2 {
             display: flex;
             width: calc(100% + 60px);
             margin: 0 -30px;
@@ -73,7 +73,7 @@
     &__btn {
         background: $black;
 
-        @include md4 {
+        @include md2 {
             background: $red;
             display: block;
         }
